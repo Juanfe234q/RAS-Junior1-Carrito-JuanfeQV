@@ -13,7 +13,7 @@ from geometry_msgs.msg import Twist
 import socket
 
 
-WEMOS_IP   = '10.181.4.126' 
+WEMOS_IP   = '10.250.172.218' 
 #El mismo para ROS Y el Wemos
 WEMOS_PORT = 8274
 
