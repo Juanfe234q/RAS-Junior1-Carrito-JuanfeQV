@@ -23,8 +23,8 @@ setup(
         ],
     },
     entry_points={
-    'console_scripts': [
-        'comando_wifi_carrito = carrito_samu_juanfe.comando_wifi_carrito:main',
+    'console_scripts':[
+        'comando_comunicacion = carrito_samu_juanfe.comando_comunicacion:main',
         'comando_movimiento = carrito_samu_juanfe.comando_movimiento:main',
     ],
 },

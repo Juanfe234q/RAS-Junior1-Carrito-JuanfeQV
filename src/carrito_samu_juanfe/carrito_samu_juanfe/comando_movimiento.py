@@ -2,11 +2,12 @@
 #rcply --> Comunicacion con ROS 2
 #Node --> Creacion de un Nodo
 #Que es un nodo? --> Cada Nodo significa una Tarea
-#Cuantos Nodos voy a usar: 2 - 1. Movimiento 2. Wifi
-#Cómo funciona la lógica --> Nodo Movimiento --> tópico --> mensaje --> NodoWifi
+#Cuantos Nodos voy a usar: 2 - 1. Movimiento 2. Serial
+#Cómo funciona la lógica --> Nodo Movimiento --> tópico --> mensaje --> NodoCOmunicacion se suscribe --> 
+# manda por Serial --> ESP32 --> Carrito en Movimiento!
 #geometry_msgs --> Paquete de ROS de movimiento
 #Twist se importa del paquete --> Da lugar a la velocidad
-#sys - tty - termios librerias de Python 
+#sys - tty - termios librerias de Python para capturaer las teclas
 
 #Este es el Código del Comando de Movimiento
 
@@ -50,7 +51,7 @@ class ComandoMovimiento(Node): #Crea la clase del Nodo
             termios.tcsetattr(fd, termios.TCSADRAIN, old) #Aqui pase retorna a lo orginal
 
     def publicar(self, linear, angular): #FUncion de Publicar
-        msg = Twist() #Aqui ceamos el mensaje vacio de tipo twist para llenarlo
+        msg = Twist() #Aqui creamos el mensaje vacio de tipo twist para llenarlo
         msg.linear.x = linear #Le asignamos el valor de movimiento lineal
         msg.angular.z = angular #Le asignamos el valor de movimiento angular
         self.pub.publish(msg) #Manda el mensaje al topico
@@ -58,17 +59,16 @@ class ComandoMovimiento(Node): #Crea la clase del Nodo
     def correr(self):
         while rclpy.ok(): #Aqui mientras este vigente la conexion a ROS
             tecla = self.leer_tecla() #Invoco la funcion leer tecla
-
-            if tecla == '\x1b[A':      # flecha arriba
+            if tecla == '\x1b[A': #flecha de arriba
                 self.get_logger().info('Adelante') #Cuando es Adelante - uso la funcion publicar
                 self.publicar(1.0, 0.0) #Los valores de la funcion publicar es 1.0 lineal y 0 en angulo
-            elif tecla == '\x1b[B':    # flecha abajo
+            elif tecla == '\x1b[B': #flecha de abajo
                 self.get_logger().info('Atras') #Misma logica con atras
                 self.publicar(-1.0, 0.0) 
-            elif tecla.lower() == 'i': # izquierda
+            elif tecla.lower() == 'i': #izquierda
                 self.get_logger().info('Izquierda') #Misma logia con Izquierda
                 self.publicar(0.0, 1.0)
-            elif tecla.lower() == 'd': # derecha
+            elif tecla.lower() == 'd': #derecha
                 self.get_logger().info('Derecha') #Misma logica con Derecha
                 self.publicar(0.0, -1.0)
             elif tecla == '\x03':      #Ctrl+C --> deternerlo
