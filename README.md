@@ -81,7 +81,10 @@ Para poder Ejecutar el Carrito se debe tener instalado
 
 **2 CLONAR EL REPOSITORIO DE GITHUB**
 
-
+```bash
+git clone https://github.com/Juanfe234q/RAS-Junior1-Carrito-JuanfeQV
+cd RAS-Junior1-Carrito-JuanfeQV
+```
 
 **3 CARGAR EL FIRMWARE AL ESP32**
 
@@ -141,7 +144,7 @@ Entre las Dos Terminales debe de Verse la Correlación de conunicación entre **
 
 ## DEMO VIDEO
 
-[Watch here]( )
+[Watch here](https://www.youtube.com/shorts/QARdYJ6Z8mI)
 
 
 
