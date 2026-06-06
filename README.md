@@ -144,7 +144,7 @@ Entre las Dos Terminales debe de Verse la Correlación de conunicación entre **
 
 ## DEMO VIDEO
 
-[Watch here](https://www.youtube.com/shorts/QARdYJ6Z8mI)
+[Watch here](https://youtu.be/doSvd2s2XKI?si=-VkTfcjhTD4Mxf8v)
 
 
 
